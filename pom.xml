@@ -107,6 +107,23 @@
                                     <basedir>/opt/wildfly-swarm</basedir>  
                                 </assembly>
                             </build>
+                            <run>
+                                <ports>
+                                    <!-- Map container port 8080 to a dynamical port -->
+                                    <port>${swarm.port}:8080</port>
+                                </ports>
+                                <wait>
+                                    <http>
+                                        <url>http://${docker.host.address}:${swarm.port}</url>
+                                        <!-- Change this to 200 when the URL above hits an endpoint -->
+                                        <status>404</status>
+                                    </http>
+                                </wait>
+                                <log>
+                                    <color>yellow</color>
+                                    <prefix>SWARM</prefix>
+                                </log>
+                            </run>
                         </image>
                     </images>
                 </configuration>
