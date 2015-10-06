@@ -76,6 +76,13 @@
                             <build>
                                 <from>${docker.from}</from>
                                 <maintainer>markus@jboss.org</maintainer>
+                                <tags>
+                                    <tag>myfear</tag>
+                                    <tag>${project.version}</tag>
+                                </tags>
+                                <ports>
+                                    <port>8080</port>
+                                </ports>
                                 <entryPoint>
                                     <exec>
                                         <arg>java</arg>
@@ -88,6 +95,7 @@
                                         <dependencySets>
                                             <dependencySet>
                                                 <includes>
+                                                    <!-- wie refferenziere ich denn hier das artefact 1.0-SNAPSHOT-swarm ??-->
                                                     <include>net.eisele.test:swarm-sample</include>
                                                 </includes>
                                                 <outputFileNameMapping>sample-service.jar</outputFileNameMapping>
