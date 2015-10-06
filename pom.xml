@@ -94,9 +94,10 @@
                                     <inline>
                                         <dependencySets>
                                             <dependencySet>
+                                                <useProjectAttachments>true</useProjectAttachments>
                                                 <includes>
                                                     <!-- wie refferenziere ich denn hier das artefact 1.0-SNAPSHOT-swarm ??-->
-                                                    <include>net.eisele.test:swarm-sample</include>
+                                                    <include>net.eisele.test:swarm-sample:jar:swarm</include>
                                                 </includes>
                                                 <outputFileNameMapping>sample-service.jar</outputFileNameMapping>
                                             </dependencySet>
