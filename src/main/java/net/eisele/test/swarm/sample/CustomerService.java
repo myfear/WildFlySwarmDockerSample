@@ -15,7 +15,7 @@ import javax.ws.rs.core.UriInfo;
 public class CustomerService {
 
     @Context
-    UriInfo  context ;
+    UriInfo context;
 
     /**
      * Creates a new instance of CustomerService
@@ -25,14 +25,14 @@ public class CustomerService {
 
     /**
      * Simple example to output request URI and hostname
-     * @return an instance of
-     * java.lang.String
+     *
+     * @return an instance of java.lang.String
      */
     @GET
     @Produces("application/json")
     public String getJson() {
-
-        return "<b>WildFly Swarm Docker Application on OpenShift at " + context.getBaseUri() + " - Hostname: " +System.getenv().get("HOSTNAME") + "</b>" ;
+        String text = "WildFly Swarm Docker Application on OpenShift at " + context.getBaseUri() + " - Hostname: " + System.getenv().get("HOSTNAME") + "";
+        return "{\"text\":\"" + text + "\"}";
 
     }
 

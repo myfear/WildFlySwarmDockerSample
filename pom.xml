@@ -17,10 +17,10 @@
         <docker.assemblyDescriptorRef>artifact</docker.assemblyDescriptorRef>
         <docker.image>myfear/swarm-sample:latest</docker.image>
         
-        <!-- uncomment the following two lines when you want to test it locally -->
-        <docker.host>tcp://vagrant.f8:2375</docker.host>
-        <docker.registry>registry.vagrant.f8:80</docker.registry>
-          
+        <!-- uncomment the following two lines when you want to test it locally 
+      <docker.host>tcp://vagrant.f8:2375</docker.host>
+      <docker.registry>registry.vagrant.f8:80</docker.registry>
+        -->
     </properties>
     
     <dependencies>
@@ -95,7 +95,6 @@
                                             <dependencySet>
                                                 <useProjectAttachments>true</useProjectAttachments>
                                                 <includes>
-                                                    <!-- wie refferenziere ich denn hier das artefact 1.0-SNAPSHOT-swarm ??-->
                                                     <include>net.eisele.test:swarm-sample:jar:swarm</include>
                                                 </includes>
                                                 <outputFileNameMapping>sample-service.jar</outputFileNameMapping>
@@ -107,22 +106,23 @@
                                 </assembly>
                             </build>
                             <run>
-                                +                                <ports>
-                                    +                                    <!-- Map container port 8080 to a dynamical port -->
-                                    +                                    <port>${swarm.port}:8080</port>
-                                    +                                </ports>
-                                +                                <wait>
-                                    +                                    <http>
-                                        +                                        <url>http://${docker.host.address}:${swarm.port}</url>
-                                        +                                        <!-- Change this to 200 when the URL above hits an endpoint -->
-                                        +                                        <status>404</status>
-                                        +                                    </http>
-                                    +                                </wait>
-                                +                                <log>
-                                    +                                    <color>yellow</color>
-                                    +                                    <prefix>SWARM</prefix>
-                                    +                                </log>
-                                +                            </run>
+                                <ports>
+                                    <!-- Map container port 8080 to a dynamical port -->
+                                    <port>${swarm.port}:8080</port>
+                                </ports>
+                                <wait>
+                                    <http>
+                                        <url>http://${docker.host.address}:${swarm.port}</url>
+                                        <!-- Change this to 200 when the URL above hits an endpoint -->
+                                        <status>200</status>
+                                    </http>
+                                    <time>30000</time>
+                                </wait>
+                                <log>
+                                    <color>yellow</color>
+                                    <prefix>SWARM</prefix>
+                                </log>
+                            </run>
                         </image>
                     </images>
                     <authConfig>
