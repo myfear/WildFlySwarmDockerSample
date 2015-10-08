@@ -1,0 +1,14 @@
+{
+  "kind": "Route",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "docker-registry-route"
+  },
+  "spec": {
+    "host": "registry.vagrant.f8",
+    "to": {
+      "kind": "Service",
+      "name": "docker-registry"
+    }
+  }
+}
