@@ -125,10 +125,6 @@
                             </run>
                         </image>
                     </images>
-                    <authConfig>
-                        <username>myfear</username>
-                        <password>uMdf0yjJTN9xrDBmiXPuiyjPEqyYU1NdMmuhCuhUFuI</password>
-                    </authConfig>
                 </configuration>
             </plugin>
         </plugins>
